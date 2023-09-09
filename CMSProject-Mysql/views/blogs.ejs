@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CMS</h1>
+        <nav>
+            <a href="/createBlog">Add Blog</a>
+
+        </nav>
+    </header>
+
+    <div class="container">
+      <%  blogs.forEach((blog)=>{ %>
+        <div class="card">
+            <h2><%- blog.title  %></h2>
+            <h3><%- blog.subTitle %></h3>
+            <p><%- blog.description %></p>
+        </div>
+<%       }) %>
+
+    </div>
+</body>
+</html>

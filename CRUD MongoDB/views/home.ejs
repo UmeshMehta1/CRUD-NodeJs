@@ -1,0 +1,52 @@
+<%- include('./partials/header.ejs')%>
+
+    <div class="dashboard">
+        <div class="left-column">
+            <h2>Add New Student</h2>
+            <form id="student-form" method="post" action="/">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <label for="fees">Fees:</label>
+                <input type="number" id="fees" name="fees" required>
+                <button type="submit">Add</button>
+            </form>
+            
+        </div>
+        <div class="right-column">
+            <h2>List of Students</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Fees</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="student-list">
+                    <% let i=1%>
+
+                    <% data.forEach((item)=>{ %>
+                    <tr>
+                        <td><%=i++%></td>
+                        <td><%= item.name%></td>
+                        <td><%= item.age%></td>
+                        <td><%= item.fees%></td>
+                        <td>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i class="fa-solid fa-trash"></i>
+                        </td>
+                    </tr>
+
+                    <%  }) %>
+                   
+                    <!-- Student rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

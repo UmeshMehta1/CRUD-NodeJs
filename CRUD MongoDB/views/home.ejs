@@ -36,8 +36,18 @@
                         <td><%= item.age%></td>
                         <td><%= item.fees%></td>
                         <td>
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <form method="get" action="/edit/<%= item._id%>" style="display: inline;" >
+                                <button type="submit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </form>
+
+                            <form method="post" action="/delete/<%= item._id%>" style="display: inline;" >
+                                <button type="submit">
                             <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                           
                         </td>
                     </tr>
 

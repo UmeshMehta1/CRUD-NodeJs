@@ -9,21 +9,22 @@
 <body>
     <div class="edit-form-container">
         <h2>Edit Student</h2>
-        <form id="edit-form">
+        <form id="edit-form" method="post" action="/update/<%=data._id%>/">
             <div class="form-group">
                 <label for="edit-name">Name:</label>
-                <input type="text" id="edit-name" required>
+                <input type="text" value="<%= data.name%>" id="edit-name" name="name"  required>
             </div>
             <div class="form-group">
                 <label for="edit-age">Age:</label>
-                <input type="number" id="edit-age" required>
+                <input type="number" value="<%= data.age%>" id="edit-age" name="age" required>
             </div>
             <div class="form-group">
                 <label for="edit-fees">Fees:</label>
-                <input type="number" id="edit-fees" required>
+                <input type="number" value="<%= data.fees%>" id="edit-fees" name="fees" required>
             </div>
-            <div class="form-group">
-                <button type="submit">Save</button>
+            <div class="form-group " style="display: inline;">
+                <button type="submit">Update</button>
+                <!-- <button type="submit">Update</button> -->
             </div>
         </form>
     </div>

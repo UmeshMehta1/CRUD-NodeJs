@@ -15,7 +15,6 @@ class studentController{
         const result = await doc.save()
         console.log(result);
         res.redirect('/')
-
         
      } catch (error) {
         console.log(error)
@@ -34,15 +33,38 @@ class studentController{
         
     }
 
-    static editDoc = (req,res)=>{
-        res.render("edit")
+    static editDoc = async(req,res)=>{
+        try {
+            const result = await StudentModel.findById(req.params.id)
+            // console.log(req.body)
+            res.render("edit",{data:result})
+        } catch (error) {
+            console.log(error)
+        }
+      
     } 
 
-    static updateDocById = (req,res)=>{
+    static updateDocById = async(req,res)=>{
+        // console.log(req.params.id)
+        // console.log(req.body)
+        try {
+            const result = await StudentModel.findByIdAndUpdate(req.params.id, req.body)
+            console.log(result)
+        } catch (error) {
+            console.log(error)
+        }
         res.redirect('/')
     }
-    static deleteDocById = (req,res)=>{
-        res.redirect('/')
+
+    static deleteDocById = async(req,res)=>{
+        try {
+            const result=await  StudentModel.findByIdAndDelete(req.params.id);
+            console.log(result)
+            res.redirect('/')
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 }
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Edit Task</title>
+</head>
+<style>
+    /* Add styles specific to the edit page */
+body.edit-page {
+    background-color: #f7f7f7;
+}
+
+.container.edit-page {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 50px auto; /* Center the container vertically */
+    max-width: 400px; /* Adjust the width as needed */
+}
+
+h1.edit-page {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-container.edit-page {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#editTaskInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#saveButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#saveButton:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<body>
+    <form action="/update/<%=data._id%>/" method="post">
+    <div class="container">
+        <h1>Edit Task</h1>
+        <div class="input-container">
+            <input type="text" value="<%= data.name%>" name="name" id="editTaskInput" placeholder="Edit task..." required>
+            <button id="saveButton">Update</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

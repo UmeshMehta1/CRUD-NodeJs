@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo App</title>
+</head>
+<style>
+    /* Reset some default styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Set a background color and font for the body */
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the container and style it */
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Style the heading */
+h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style the input container */
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Style the task input */
+#taskInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style the add button */
+#addButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Change button color on hover */
+#addButton:hover {
+    background-color: #0056b3;
+}
+
+/* Style the task list */
+#taskList {
+    padding: 0;
+}
+
+/* Style each task item */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style the task text */
+li::before {
+    content: "⚫"; /* Add a bullet point before each task */
+    margin-right: 10px;
+    color: #007bff;
+}
+
+/* Style the edit and delete buttons */
+.edit-button,
+.delete-button {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+/* Change button color on hover */
+.edit-button:hover,
+.delete-button:hover {
+    color: #007bff;
+}
+
+/* Add some space above the first task item */
+li:first-child {
+    margin-top: 10px;
+}
+
+/* Add some space below the last task item */
+li:last-child {
+    margin-bottom: 10px;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>To-Do App</h1>
+        <form action="/" method="post">
+        <div class="input-container">
+            <input type="text"name="name" id="taskInput" placeholder="Enter task..." required>
+            <button id="addButton">Add Task</button>
+        </div>
+    </form>
+        <ul id="taskList">
+            <!-- Tasks will be displayed here -->
+            <% data.forEach((item)=>{ %>
+                <li>
+                    <h4><%= item.name%></h4>
+
+                    <form action="/edit/<%= item._id%>" method="get">
+                    <button class="edit-button" type="submit">Edit</button>
+                    </form>
+
+                    <form action="/delete/<%= item._id%>" method="post">
+                    <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                </li>
+           <% })%>
+            
+            <!-- Add more tasks as needed -->
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
